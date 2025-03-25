@@ -39,13 +39,6 @@ a = int(input("Введите первое число: "))
 b = int(input("Введите второе число: "))
 
 
-def max_number(a, b):
-    if a > b:
-        return a
-    else:
-        return b
-
-
 def test_max_number():
     assert max_number(5, 3) == 5, "Ошибка: max_number(5, 3) должно быть 5"
     assert max_number(-1, 1) == 1, "Ошибка: max_number(-1, 1) должно быть 1"
