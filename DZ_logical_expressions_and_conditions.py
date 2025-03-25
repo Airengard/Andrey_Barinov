@@ -3,29 +3,15 @@
 # Возраст должен быть 18 лет или старше.
 # Человек должен быть гражданином страны.
 # Человек не должен быть дисквалифицирован (например, по причине уголовного наказания).
-while True:
-    try:
-        age = int(input("Введите Ваш возраст: "))
-        if age < 0:
-            print("Ошибка: Возраст не может быть отрицательным!")
-        elif age > 130:
-            print("Ошибка: Введите реалистичный возраст (не более 130 лет)!")
-        else:
-            break
-    except ValueError:
-        print("Ошибка: Введите целое число для возраста!")
+def can_vote(age, is_citizen, is_disqualified):
+    return age >= 18 and is_citizen and not is_disqualified
 
-while True:
-    citizen = input("Являетесь ли Вы гражданином РФ? да/нет: ").lower()
-    if citizen in ("да", "нет"):
-        break
-    print("Ошибка: Введите 'да' или 'нет'!")
 
-while True:
-    out_law = input("Действуют ли в отношении Вас какие-либо меры дисквалификации? да/нет: ").lower()
-    if out_law in ("да", "нет"):
-        break
-    print("Ошибка: Введите 'да' или 'нет'!")
+age = int(input("Введите ваш возраст: "))
+is_citizen = input("Вы гражданин страны (да/нет)? ").lower() == 'да'
+is_disqualified = input("Имеется ли у Вас судимость (да/нет)? ").lower() == 'да'
 
-status = "Вы можете проголосовать!" if age >= 18 and citizen == "да" and out_law == "нет" else "Вы не можете проголосовать!"
-print(status)
+if can_vote(age, is_citizen, is_disqualified):
+    print("Вы можете голосовать на выборах!")
+else:
+    print("Вы не можете голосовать на выборах.")
